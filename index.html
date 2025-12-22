@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Limb Lab - Authorization Assistant</title>
     <style>
-        /* Forces full screen height */
+        /* 1. Forces the chat to fill the screen perfectly */
         body, html { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             overflow: hidden; background-color: #ffffff; 
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Inter', sans-serif; /* Matches the clean font in your screenshot */
         }
         flowise-fullchatbot { display: block; width: 100%; height: 100%; }
     </style>
@@ -24,7 +24,7 @@
         Chatbot.initFull({
             chatflowid: "b562634e-5927-4d40-b3e2-12f948f92451",
             
-            // CONNECTS TO VERCEL BRIDGE (Fixes "Failed to Fetch")
+            // 2. CONNECTS TO VERCEL BRIDGE (Fixes "Failed to Fetch")
             apiHost: window.location.origin, 
             
             theme: {
@@ -32,26 +32,19 @@
                     showTitle: true,
                     title: 'Limb Lab - Authorization Assistant',
                     
-                    // --- 1. HEADER ICON = LIMB LAB ---
+                    // --- HEADER ICON = LIMB LAB ---
                     titleAvatarSrc: 'https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png',
 
-                    // --- 2. WELCOME MESSAGE ---
+                    // --- WELCOME MESSAGE ---
                     welcomeMessage: 'Hello! I am your Insurance Authorization Assistant. Please paste the anonymous clinical notes below. Important: Include the Payer Name (e.g., Blue Cross) and L-Code (e.g., L5856), but DO NOT include the patient\'s real name or DOB.',
                     
-                    // --- 3. REMOVE "HI THERE" ---
+                    // --- REMOVE DEFAULT "HI" PROMPTS ---
                     starterPrompts: [], 
 
-                    // --- 4. PURPLE THEME (Your Origin Style) ---
+                    // --- MAIN BACKGROUND ---
                     backgroundColor: '#ffffff',
                     
-                    // User Bubble (Purple)
-                    userMessage: {
-                        backgroundColor: '#8c54fb', 
-                        textColor: '#ffffff',
-                        showAvatar: false
-                    },
-                    
-                    // Bot Bubble (Light + ROBOT Icon)
+                    // --- BOT MESSAGE (Clean Light Grey + Robot Icon) ---
                     botMessage: {
                         backgroundColor: '#f7f8ff',
                         textColor: '#303235',
@@ -59,14 +52,22 @@
                         avatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png'
                     },
 
-                    // Input Area (Purple Button)
+                    // --- USER MESSAGE (Your Nice Purple) ---
+                    userMessage: {
+                        backgroundColor: '#8c54fb', // Matches your "Origin" Purple
+                        textColor: '#ffffff',
+                        showAvatar: false
+                    },
+
+                    // --- INPUT AREA (Purple Button) ---
                     textInput: {
                         placeholder: 'Paste messy clinical notes here...',
                         backgroundColor: '#ffffff',
                         textColor: '#303235',
-                        sendButtonColor: '#8c54fb' 
+                        sendButtonColor: '#8c54fb' // Matches User Bubble
                     },
                     
+                    // --- CLEAN FOOTER (Hides "Powered By") ---
                     footer: {
                         showFooter: false 
                     }
