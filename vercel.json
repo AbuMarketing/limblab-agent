@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://agent.datainsta.com/api/:path*"
+    },
+    {
+      "source": "/socket.io/:path*",
+      "destination": "https://agent.datainsta.com/socket.io/:path*"
+    }
+  ]
+}
