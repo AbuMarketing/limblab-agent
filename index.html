@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Limb Lab - Authorization Assistant</title>
     <style>
-        /* Forces the chat to fill the screen */
+        /* Forces the chat to fill the screen perfectly */
         body, html { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             overflow: hidden; background-color: #ffffff; 
+            font-family: 'Segoe UI', sans-serif;
         }
         flowise-fullchatbot { display: block; width: 100%; height: 100%; }
     </style>
@@ -19,33 +20,43 @@
 
     <script type="module">
         import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-
+        
         Chatbot.initFull({
             chatflowid: "b562634e-5927-4d40-b3e2-12f948f92451",
-
-            // --- THE FIX: We point to the local bridge, not the remote server ---
+            
+            // This connects to the Vercel Bridge (Required to stop "Failed to fetch")
             apiHost: window.location.origin, 
-
+            
             theme: {
                 chatWindow: {
                     showTitle: true,
                     title: 'Limb Lab - Authorization Assistant',
+                    
+                    // --- 1. NEW LIMB LAB LOGO (HEADER) ---
+                    titleAvatarSrc: 'https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png',
 
-                    // Your Limb Lab Icon
-                    titleAvatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png',
+                    // --- 2. YOUR SPECIFIC WELCOME MESSAGE ---
+                    welcomeMessage: 'Hello! I am your Insurance Authorization Assistant. Please paste the anonymous clinical notes below. Important: Include the Payer Name (e.g., Blue Cross) and L-Code (e.g., L5856), but DO NOT include the patient\'s real name or DOB.',
+                    
+                    // --- 3. REMOVES "HI THERE" ---
+                    starterPrompts: [], 
 
-                    // Branding Colors
+                    // --- 4. MEDICAL BLUE COLORS (Original UI) ---
+                    backgroundColor: '#ffffff',
+                    
+                    // User Bubble (Medical Blue)
                     userMessage: {
                         backgroundColor: '#0284c7', 
                         textColor: '#ffffff',
                         showAvatar: false
                     },
-
+                    
+                    // Bot Bubble (Light Blue + Limb Lab Logo)
                     botMessage: {
                         backgroundColor: '#f0f9ff',
                         textColor: '#1e293b',
                         showAvatar: true,
-                        avatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png'
+                        avatarSrc: 'https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png'
                     },
 
                     textInput: {
@@ -54,9 +65,9 @@
                         textColor: '#1e293b',
                         sendButtonColor: '#0284c7' 
                     },
-
+                    
                     footer: {
-                        showFooter: false
+                        showFooter: false // Keeps it clean
                     }
                 }
             }
