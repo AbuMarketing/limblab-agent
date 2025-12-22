@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limb Lab - Authorization Assistant</title>
+    <style>
+        body { margin: 0; padding: 0; }
+    </style>
+</head>
+<body>
+    
+    <instaagents-fullchatbot></instaagents-fullchatbot>
 
+    <script type="module">
+        import Chatbot from "https://cdn.jsdelivr.net/npm/instaagents-embed@latest/dist/web.js"
+        
+        Chatbot.initFull({
+            chatflowid: "b562634e-5927-4d40-b3e2-12f948f92451",
+            apiHost: "https://agent.datainsta.com",
+            theme: {
+                chatWindow: {
+                    showTitle: true,
+                    title: 'Limb Lab - Authorization Assistant',
+                    titleAvatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png',
+                    welcomeMessage: 'Hello! I am your Insurance Authorization Assistant. Please paste the anonymous clinical notes below. Important: Include the Payer Name (e.g., Blue Cross) and L-Code (e.g., L5856), but DO NOT include the patient\'s real name or DOB.',
+                    backgroundColor: '#ffffff',
+                    
+                    // Bot Message Bubble (Light Blue + Robot Icon)
+                    botMessage: {
+                        backgroundColor: '#f0f9ff',
+                        textColor: '#1e293b',
+                        showAvatar: true,
+                        avatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png'
+                    },
+                    
+                    // User Message Bubble (Medical Blue)
+                    userMessage: {
+                        backgroundColor: '#0284c7',
+                        textColor: '#ffffff',
+                        showAvatar: false
+                    },
+                    
+                    // Input Area
+                    textInput: {
+                        placeholder: 'Paste messy clinical notes here...',
+                        backgroundColor: '#ffffff',
+                        textColor: '#1e293b',
+                        sendButtonColor: '#0284c7'
+                    },
+                    
+                    // Footer Branding
+                    footer: {
+                        textColor: '#303235',
+                        text: 'Powered by',
+                        company: 'InstaAgents',
+                        companyLink: 'https://datainsta.com'
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
