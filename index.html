@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Limb Lab - Authorization Assistant</title>
     <style>
+        /* THIS IS THE FIX: Forces the body to fill the screen */
         body, html { 
             margin: 0; 
             padding: 0; 
             height: 100%; 
             width: 100%;
             background-color: #ffffff;
+            font-family: sans-serif;
         }
+        /* Forces the Chatbot to fill the body */
         instaagents-fullchatbot {
             display: block;
             height: 100vh;
@@ -36,7 +39,9 @@
                     titleAvatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png',
                     welcomeMessage: 'Hello! I am your Insurance Authorization Assistant. Please paste the anonymous clinical notes below. Important: Include the Payer Name (e.g., Blue Cross) and L-Code (e.g., L5856), but DO NOT include the patient\'s real name or DOB.',
                     backgroundColor: '#ffffff',
+                    fontSize: 16,
                     
+                    // Bot Message Bubble (Light Blue + Robot Icon)
                     botMessage: {
                         backgroundColor: '#f0f9ff',
                         textColor: '#1e293b',
@@ -44,12 +49,14 @@
                         avatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png'
                     },
                     
+                    // User Message Bubble (Medical Blue)
                     userMessage: {
                         backgroundColor: '#0284c7',
                         textColor: '#ffffff',
                         showAvatar: false
                     },
                     
+                    // Input Area
                     textInput: {
                         placeholder: 'Paste messy clinical notes here...',
                         backgroundColor: '#ffffff',
@@ -57,6 +64,7 @@
                         sendButtonColor: '#0284c7'
                     },
                     
+                    // Footer Branding
                     footer: {
                         textColor: '#303235',
                         text: 'Powered by',
