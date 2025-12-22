@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Limb Lab - Authorization Assistant</title>
     <style>
-        /* Forces the chat to fill the screen perfectly */
+        /* Forces full screen height */
         body, html { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             overflow: hidden; background-color: #ffffff; 
@@ -24,7 +24,7 @@
         Chatbot.initFull({
             chatflowid: "b562634e-5927-4d40-b3e2-12f948f92451",
             
-            // This connects to the Vercel Bridge (Required to stop "Failed to fetch")
+            // CONNECTS TO VERCEL BRIDGE (Fixes "Failed to Fetch")
             apiHost: window.location.origin, 
             
             theme: {
@@ -32,42 +32,43 @@
                     showTitle: true,
                     title: 'Limb Lab - Authorization Assistant',
                     
-                    // --- 1. NEW LIMB LAB LOGO (HEADER) ---
+                    // --- 1. HEADER ICON = LIMB LAB ---
                     titleAvatarSrc: 'https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png',
 
-                    // --- 2. YOUR SPECIFIC WELCOME MESSAGE ---
+                    // --- 2. WELCOME MESSAGE ---
                     welcomeMessage: 'Hello! I am your Insurance Authorization Assistant. Please paste the anonymous clinical notes below. Important: Include the Payer Name (e.g., Blue Cross) and L-Code (e.g., L5856), but DO NOT include the patient\'s real name or DOB.',
                     
-                    // --- 3. REMOVES "HI THERE" ---
+                    // --- 3. REMOVE "HI THERE" ---
                     starterPrompts: [], 
 
-                    // --- 4. MEDICAL BLUE COLORS (Original UI) ---
+                    // --- 4. PURPLE THEME (Your Origin Style) ---
                     backgroundColor: '#ffffff',
                     
-                    // User Bubble (Medical Blue)
+                    // User Bubble (Purple)
                     userMessage: {
-                        backgroundColor: '#0284c7', 
+                        backgroundColor: '#8c54fb', 
                         textColor: '#ffffff',
                         showAvatar: false
                     },
                     
-                    // Bot Bubble (Light Blue + Limb Lab Logo)
+                    // Bot Bubble (Light + ROBOT Icon)
                     botMessage: {
-                        backgroundColor: '#f0f9ff',
-                        textColor: '#1e293b',
+                        backgroundColor: '#f7f8ff',
+                        textColor: '#303235',
                         showAvatar: true,
-                        avatarSrc: 'https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png'
+                        avatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png'
                     },
 
+                    // Input Area (Purple Button)
                     textInput: {
                         placeholder: 'Paste messy clinical notes here...',
                         backgroundColor: '#ffffff',
-                        textColor: '#1e293b',
-                        sendButtonColor: '#0284c7' 
+                        textColor: '#303235',
+                        sendButtonColor: '#8c54fb' 
                     },
                     
                     footer: {
-                        showFooter: false // Keeps it clean
+                        showFooter: false 
                     }
                 }
             }
