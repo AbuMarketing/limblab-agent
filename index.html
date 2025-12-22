@@ -8,11 +8,11 @@
     <link rel="icon" type="image/png" href="https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png">
 
     <style>
-        /* Forces the chat to fill the screen perfectly with clean fonts */
+        /* Forces full screen & clean font */
         body, html { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             overflow: hidden; background-color: #ffffff; 
-            font-family: "Inter", "Segoe UI", sans-serif;
+            font-family: "Open Sans", "Segoe UI", sans-serif; /* Matched your font stack */
         }
         flowise-fullchatbot { display: block; width: 100%; height: 100%; }
     </style>
@@ -26,54 +26,62 @@
         
         Chatbot.initFull({
             chatflowid: "b562634e-5927-4d40-b3e2-12f948f92451",
-            
-            // CONNECTS TO VERCEL BRIDGE (Fixes "Failed to Fetch")
             apiHost: window.location.origin, 
             
             theme: {
+                // --- THE MAGIC CSS SECTION ---
+                customCSS: `
+                    /* 1. Header Force Blue */
+                    .chatbot-header {
+                        background-color: #0284c7 !important;
+                    }
+
+                    /* 2. BOT BUBBLE (Exact Replica from your CSS) */
+                    [data-testid="host-bubble"] {
+                        background-color: rgb(240, 249, 255) !important; /* The Light Blue base */
+                        border: 1px solid rgba(140, 84, 251, 0.1) !important; /* The Purple Border */
+                        box-shadow: 0 4px 15px rgba(140, 84, 251, 0.1) !important; /* The Purple Glow */
+                        border-radius: 6px !important;
+                        color: rgb(30, 41, 59) !important;
+                        backdrop-filter: blur(10px) !important;
+                    }
+
+                    /* 3. USER BUBBLE (The Purple Gradient) */
+                    [data-testid="user-bubble"] {
+                        background: linear-gradient(135deg, #8c54fb, #cb6ce6) !important;
+                        color: #ffffff !important;
+                        border-radius: 6px !important;
+                        box-shadow: 0 4px 15px rgba(140, 84, 251, 0.2) !important;
+                    }
+                `,
+
                 chatWindow: {
                     showTitle: true,
                     title: 'Limb Lab - Authorization Assistant',
-                    
-                    // --- HEADER ICON (Limb Lab) ---
                     titleAvatarSrc: 'https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png',
-
-                    // --- WELCOME MESSAGE ---
                     welcomeMessage: 'Hello! I am your Insurance Authorization Assistant. Please paste the anonymous clinical notes below. Important: Include the Payer Name (e.g., Blue Cross) and L-Code (e.g., L5856), but DO NOT include the patient\'s real name or DOB.',
-                    
-                    // --- REMOVE DEFAULT PROMPTS ---
                     starterPrompts: [], 
-
-                    // --- MAIN BACKGROUND ---
                     backgroundColor: '#ffffff',
                     
-                    // --- BOT BUBBLE (Clean Light Grey + Robot Icon) ---
+                    // Fallback settings (The customCSS above overrides these visually)
                     botMessage: {
-                        backgroundColor: '#f7f8ff',
-                        textColor: '#303235',
+                        backgroundColor: '#f0f9ff',
+                        textColor: '#1e293b',
                         showAvatar: true,
                         avatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png'
                     },
-
-                    // --- USER BUBBLE (Your Purple Origin) ---
                     userMessage: {
                         backgroundColor: '#8c54fb', 
                         textColor: '#ffffff',
                         showAvatar: false
                     },
-
-                    // --- INPUT AREA (Purple Button) ---
                     textInput: {
                         placeholder: 'Paste messy clinical notes here...',
                         backgroundColor: '#ffffff',
                         textColor: '#1e293b',
-                        sendButtonColor: '#8c54fb' // Matches User Bubble
+                        sendButtonColor: '#8c54fb'
                     },
-                    
-                    // --- CLEAN FOOTER ---
-                    footer: {
-                        showFooter: false 
-                    }
+                    footer: { showFooter: false }
                 }
             }
         })
