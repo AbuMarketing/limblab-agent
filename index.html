@@ -5,22 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Limb Lab - Authorization Assistant</title>
     <style>
-        /* Forces full screen height */
+        /* Forces the chat to fill the screen */
         body, html { 
-            margin: 0; 
-            padding: 0; 
-            width: 100%;
-            height: 100%;
-            overflow: hidden; 
-            background-color: #ffffff;
-            font-family: sans-serif;
+            margin: 0; padding: 0; width: 100%; height: 100%; 
+            overflow: hidden; background-color: #ffffff; 
         }
-        /* Forces the Chatbot to fill the screen */
-        flowise-fullchatbot {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
+        flowise-fullchatbot { display: block; width: 100%; height: 100%; }
     </style>
 </head>
 <body>
@@ -28,51 +18,49 @@
     <flowise-fullchatbot></flowise-fullchatbot>
 
     <script type="module">
-        // We use the standard Flowise library because the custom one is broken (404)
         import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-        
+
         Chatbot.initFull({
             chatflowid: "b562634e-5927-4d40-b3e2-12f948f92451",
-            apiHost: "https://agent.datainsta.com",
+
+            // --- THE FIX: We point to the local bridge, not the remote server ---
+            apiHost: window.location.origin, 
+
             theme: {
                 chatWindow: {
                     showTitle: true,
                     title: 'Limb Lab - Authorization Assistant',
-                    titleAvatarSrc: 'https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png',
-                    welcomeMessage: 'Hello! I am your Insurance Authorization Assistant. Please paste the anonymous clinical notes below. Important: Include the Payer Name (e.g., Blue Cross) and L-Code (e.g., L5856), but DO NOT include the patient\'s real name or DOB.',
-                    backgroundColor: '#ffffff',
-                    fontSize: 16,
-                    
+
+                    // Your Limb Lab Icon
+                    titleAvatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png',
+
+                    // Branding Colors
+                    userMessage: {
+                        backgroundColor: '#0284c7', 
+                        textColor: '#ffffff',
+                        showAvatar: false
+                    },
+
                     botMessage: {
                         backgroundColor: '#f0f9ff',
                         textColor: '#1e293b',
                         showAvatar: true,
                         avatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png'
                     },
-                    
-                    userMessage: {
-                        backgroundColor: '#0284c7',
-                        textColor: '#ffffff',
-                        showAvatar: false
-                    },
-                    
+
                     textInput: {
                         placeholder: 'Paste messy clinical notes here...',
                         backgroundColor: '#ffffff',
                         textColor: '#1e293b',
-                        sendButtonColor: '#0284c7'
+                        sendButtonColor: '#0284c7' 
                     },
-                    
+
                     footer: {
-                        textColor: '#303235',
-                        text: 'Powered by',
-                        company: 'InstaAgents',
-                        companyLink: 'https://datainsta.com'
+                        showFooter: false
                     }
                 }
             }
         })
     </script>
-
 </body>
 </html>
