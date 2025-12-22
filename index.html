@@ -5,29 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Limb Lab - Authorization Assistant</title>
     <style>
-        /* THIS IS THE FIX: Forces the body to fill the screen */
+        /* Forces full screen height */
         body, html { 
             margin: 0; 
             padding: 0; 
-            height: 100%; 
             width: 100%;
+            height: 100%;
+            overflow: hidden; 
             background-color: #ffffff;
             font-family: sans-serif;
         }
-        /* Forces the Chatbot to fill the body */
-        instaagents-fullchatbot {
+        /* Forces the Chatbot to fill the screen */
+        flowise-fullchatbot {
             display: block;
-            height: 100vh;
-            width: 100vw;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
-    
-    <instaagents-fullchatbot></instaagents-fullchatbot>
+
+    <flowise-fullchatbot></flowise-fullchatbot>
 
     <script type="module">
-        import Chatbot from "https://cdn.jsdelivr.net/npm/instaagents-embed/dist/web.js"
+        // We use the standard Flowise library because the custom one is broken (404)
+        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
         
         Chatbot.initFull({
             chatflowid: "b562634e-5927-4d40-b3e2-12f948f92451",
@@ -41,7 +43,6 @@
                     backgroundColor: '#ffffff',
                     fontSize: 16,
                     
-                    // Bot Message Bubble (Light Blue + Robot Icon)
                     botMessage: {
                         backgroundColor: '#f0f9ff',
                         textColor: '#1e293b',
@@ -49,14 +50,12 @@
                         avatarSrc: 'https://cdn-icons-png.flaticon.com/512/8757/8757478.png'
                     },
                     
-                    // User Message Bubble (Medical Blue)
                     userMessage: {
                         backgroundColor: '#0284c7',
                         textColor: '#ffffff',
                         showAvatar: false
                     },
                     
-                    // Input Area
                     textInput: {
                         placeholder: 'Paste messy clinical notes here...',
                         backgroundColor: '#ffffff',
@@ -64,7 +63,6 @@
                         sendButtonColor: '#0284c7'
                     },
                     
-                    // Footer Branding
                     footer: {
                         textColor: '#303235',
                         text: 'Powered by',
