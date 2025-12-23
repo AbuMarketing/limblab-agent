@@ -8,45 +8,57 @@
     <link rel="icon" type="image/png" href="https://limblab.com/wp-content/uploads/2023/10/LimbLab-LogoImage-Glyph.png">
 
     <style>
-        /* Forces full screen & clean font */
+        /* 1. Forces full screen & clean font */
         body, html { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
             overflow: hidden; background-color: #ffffff; 
-            font-family: "Open Sans", "Segoe UI", sans-serif; /* Matched your font stack */
+            font-family: "Open Sans", "Segoe UI", sans-serif;
         }
-        flowise-fullchatbot { display: block; width: 100%; height: 100%; }
+        
+        /* 2. Forces YOUR InstaAgents component to fill the screen */
+        instaagents-fullchatbot { 
+            display: block; 
+            width: 100%; 
+            height: 100%; 
+            position: absolute; 
+            top: 0;
+            left: 0;
+        }
     </style>
 </head>
 <body>
 
-    <flowise-fullchatbot></flowise-fullchatbot>
+    <instaagents-fullchatbot></instaagents-fullchatbot>
 
     <script type="module">
-        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+        // IMPORTING YOUR NEW NPM PACKAGE v1.0.0
+        import Chatbot from "https://cdn.jsdelivr.net/npm/instaagents-embed/dist/web.js"
         
         Chatbot.initFull({
             chatflowid: "b562634e-5927-4d40-b3e2-12f948f92451",
+            
+            // KEEPS THE VERCEL BRIDGE (Safety First)
+            // This ensures it works on Vercel without CORS errors
             apiHost: window.location.origin, 
             
             theme: {
-                // --- THE MAGIC CSS SECTION ---
+                // --- LIMB LAB BRANDING CSS ---
                 customCSS: `
-                    /* 1. Header Force Blue */
+                    /* Header Force Blue */
                     .chatbot-header {
                         background-color: #0284c7 !important;
                     }
 
-                    /* 2. BOT BUBBLE (Exact Replica from your CSS) */
+                    /* Bot Bubble (Purple Border/Glow) */
                     [data-testid="host-bubble"] {
-                        background-color: rgb(240, 249, 255) !important; /* The Light Blue base */
-                        border: 1px solid rgba(140, 84, 251, 0.1) !important; /* The Purple Border */
-                        box-shadow: 0 4px 15px rgba(140, 84, 251, 0.1) !important; /* The Purple Glow */
+                        background-color: rgb(240, 249, 255) !important;
+                        border: 1px solid rgba(140, 84, 251, 0.1) !important;
+                        box-shadow: 0 4px 15px rgba(140, 84, 251, 0.1) !important;
                         border-radius: 6px !important;
                         color: rgb(30, 41, 59) !important;
-                        backdrop-filter: blur(10px) !important;
                     }
 
-                    /* 3. USER BUBBLE (The Purple Gradient) */
+                    /* User Bubble (Purple Gradient) */
                     [data-testid="user-bubble"] {
                         background: linear-gradient(135deg, #8c54fb, #cb6ce6) !important;
                         color: #ffffff !important;
@@ -63,7 +75,7 @@
                     starterPrompts: [], 
                     backgroundColor: '#ffffff',
                     
-                    // Fallback settings (The customCSS above overrides these visually)
+                    // Fallback settings
                     botMessage: {
                         backgroundColor: '#f0f9ff',
                         textColor: '#1e293b',
@@ -81,7 +93,12 @@
                         textColor: '#1e293b',
                         sendButtonColor: '#8c54fb'
                     },
-                    footer: { showFooter: false }
+                    footer: { 
+                        showFooter: true, 
+                        company: 'InstaAgents',
+                        companyLink: 'https://datainsta.com',
+                        textColor: '#9ca3af'
+                    }
                 }
             }
         })
